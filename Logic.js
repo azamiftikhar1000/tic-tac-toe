@@ -3,7 +3,7 @@ const HP = 'O';
 const aiP = 'X'; 
 const boxs = document.querySelectorAll('.box'); 
 
-function startGame() {
+const startGame = () => {
     document.querySelector(".endgame").style.display = "none"
     currentsate = Array.from(Array(9).keys()) 
     for (var i=0; i< 9; i++) {
@@ -17,19 +17,19 @@ const winstate = [
 ]; 
 
 
-function clicked (square) {
+const clicked  = (square) => {
     if (typeof currentsate[square.target.id] === 'number') { 
         turn(square.target.id, HP) 
         if (!checkTie()) turn(bestSpot(), aiP); 
     }   
 } 
-function turn(squareId, p) {
+const turn = (squareId, p) => {
     currentsate[squareId] = p;
     document.getElementById(squareId).innerText = p; 
     let gamew = checkWin(currentsate, p)
     if (gamew) gameOver(gamew) 
 } 
-function checkWin(board, p) {
+const checkWin = (board, p) => {
     let plays = board.reduce((a, e, i) => 
     (e === p) ? a.concat(i) : a, []); 
     let gamew = null;
@@ -41,7 +41,7 @@ function checkWin(board, p) {
 } 
 return gamew;
 } 
-function gameOver(gamew) {
+const gameOver = (gamew) => {
     for (let index of winstate[gamew.index]) { 
         document.getElementById(index).style.backgroundColor = 
         gamew.p === HP ? "#4da6ff" : "#ff0000"; 
@@ -51,17 +51,17 @@ function gameOver(gamew) {
     }
     declareWinner(gamew.p === HP ? "You win!" : "You lose."); 
 } 
-function declareWinner(who) {
+const declareWinner = (who) => {
     document.querySelector(".endgame").style.display = "block";
     document.querySelector(".endgame .text").innerText = who;
 }
-function emptySquares() {
+const emptySquares = () =>{
     return currentsate.filter(s => typeof s === 'number'); 
 }
-function bestSpot() {
+const bestSpot = () => {
     return minimax(currentsate, aiP).index; 
 }
-function checkTie() {
+const checkTie = () => {
     if (emptySquares().length === 0) { 
         for (var i = 0; i < boxs.length; i++) { 
             boxs[i].style.backgroundColor = "#66ff66"; 
@@ -72,7 +72,7 @@ function checkTie() {
     }
     return false;
 }
-function minimax(newBoard, p) {
+const minimax = (newBoard, p) => {
     var availSpots = emptySquares(newBoard); 
 
     if(checkWin(newBoard, p)) { 
