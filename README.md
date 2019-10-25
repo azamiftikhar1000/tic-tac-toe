@@ -4,4 +4,4 @@ Bot for Tic-tac-toe game against another player or computer. Modelled the game a
 
 In the code, an evaluation function was used to find out the winning position value with respect to a player. 
 
-![Tic Tac Toe] (https://raw.githubusercontent.com/vaibhavagarwal220/tic-tac-toe/master/tic-tac-toe-1243293_960_720.png)
+![Tic Tac Toe](https://raw.githubusercontent.com/vaibhavagarwal220/tic-tac-toe/master/tic-tac-toe-1243293_960_720.png)
